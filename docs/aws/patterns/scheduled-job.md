@@ -8,7 +8,20 @@ This pattern explains how to run recurring workloads on AWS without maintaining 
 
 A scheduled job pattern on AWS commonly uses Amazon EventBridge to trigger a Lambda function or another managed target on a schedule. The workload usually pulls data, performs routine maintenance, or generates periodic outputs.
 
-This pattern matters because recurring workloads often look simple until teams need retries, secrets, observability, and idempotency. A managed scheduling pattern helps keep those concerns explicit from the beginning.
+This pattern matters because recurring workloads often look simple until teams need retries, secrets, observability, and idempotency.
+
+## When This Pattern Fits
+
+Use this pattern when:
+
+- work needs to happen on a schedule,
+- a small runtime can execute the task,
+- the job should be easy to redeploy and observe,
+- and there is value in keeping the scheduling layer managed.
+
+## When Not to Use It
+
+Do not use this pattern when the workflow needs heavy orchestration, long-running stateful execution, or more complex control flow than a simple scheduled trigger can support cleanly.
 
 ## Common Use Cases
 
@@ -25,6 +38,10 @@ Schedule
 -> Storage or downstream API
 -> Logging and monitoring
 ```
+
+## Why This Pattern Works
+
+It works because the schedule, runtime logic, secrets, and telemetry can all be managed separately but deployed together. That keeps recurring automation simple enough to operate without pretending it has no failure modes.
 
 ## Provider Services
 
@@ -56,9 +73,21 @@ The scheduling layer is inexpensive, but repeated processing, storage, and loggi
 
 Ship schedule definitions, runtime code, and monitoring together so the job is easy to reproduce.
 
+## Common Mistakes
+
+- Treating a scheduled job like a disposable script.
+- Ignoring idempotency or duplicate execution.
+- Storing external credentials unsafely.
+- Monitoring only the trigger and not the data or side effects.
+- Letting recurring jobs run for months without freshness checks.
+
 ## Related Projects
 
 - [Project 03: Scheduled API Ingestion](../projects/project-03-scheduled-api-ingestion.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern matters because recurring automation is common and deceptively easy to underestimate. Cloud engineering here means making the job repeatable, observable, secure, and safe to retry over time.
 
 ## Official References
 

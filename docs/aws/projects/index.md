@@ -14,17 +14,29 @@ The AWS project path is cumulative. Each project adds a new layer of engineering
 - [Project 04: Analytics Platform](project-04-analytics-platform.md) adds storage organization, ingestion, and analytical workflow thinking.
 - [Project 05: Agentic RAG Assistant](project-05-agentic-rag-assistant.md) extends the platform into retrieval, safety, and AI operations.
 
-## How To Work Through The Projects
+## How To Use The Project Path
 
-Start in order unless you already understand the earlier operating model well. The value of the sequence is that the later projects make more sense after you have already practiced identity, deployment, runtime behavior, monitoring, and cost in smaller systems.
+Start in order unless you already understand the earlier AWS operating model well. The sequence is designed so that each later project assumes you are getting better at explaining identity, deployment, runtime behavior, monitoring, and cost instead of only launching more services.
 
-As you build each project, do more than get the resources created.
+As you work through a project, try to produce five things every time:
 
-- Explain how requests or events move through the architecture.
-- Document which identities deploy the system and which identities run it.
-- Add enough logging and monitoring to see whether it is healthy.
-- Note the main cost drivers and security decisions.
-- Write down what you would improve in the next iteration.
+- a simple architecture diagram,
+- a short explanation of the request or data flow,
+- a clear identity story for deployment and runtime,
+- basic monitoring or alerting evidence,
+- and a short note on the main cost and security tradeoffs.
+
+## What Good Output Looks Like
+
+The goal is not only a working deployment. The goal is a project you can explain professionally.
+
+Good project output usually includes:
+
+- what problem the project solves,
+- why the chosen AWS services fit,
+- how the system is deployed and accessed,
+- what can fail and how you would detect it,
+- what you would improve in the next version.
 
 ## Portfolio Goal
 

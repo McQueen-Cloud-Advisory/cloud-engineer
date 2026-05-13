@@ -10,6 +10,19 @@ A small analytics platform on Google Cloud often combines Cloud Storage as a lan
 
 This pattern matters because analytics systems need more than one storage choice. They require data movement, curation, access control, and operational visibility across the full pipeline.
 
+## When This Pattern Fits
+
+Use this pattern when:
+
+- data needs to land from multiple sources,
+- the team wants clear separation between ingestion and analytical serving,
+- BigQuery-style managed analytics is a good fit,
+- and the architecture should grow by layering capabilities instead of starting overly complex.
+
+## When Not to Use It
+
+Do not use this pattern when a single transactional database already answers the business question or when the team has not yet clarified data ownership, sensitivity, or freshness needs.
+
 ## Common Use Cases
 
 - Reporting pipelines
@@ -25,6 +38,10 @@ Data source
 -> BigQuery curated layer
 -> Monitoring
 ```
+
+## Why This Pattern Works
+
+It works because Google Cloud gives the platform a clean split between landing storage, event-driven or batch ingestion, analytical serving, and operations visibility. That makes it easier to reason about freshness, cost, and permissions than in a loosely assembled collection of point tools.
 
 ## Provider Services
 
@@ -56,9 +73,21 @@ Storage growth, repeated data movement, and query volume are the main cost areas
 
 Add layers incrementally so the data flow stays explainable and maintainable.
 
+## Common Mistakes
+
+- Loading data directly into the serving layer without a raw zone.
+- Treating BigQuery as if schema and access decisions can wait indefinitely.
+- Ignoring freshness and data-quality monitoring.
+- Allowing service accounts broader access than the pipeline needs.
+- Moving data too many times before validating the analytical use case.
+
 ## Related Projects
 
 - [Project 04: Analytics Platform](../projects/project-04-analytics-platform.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern matters because analytics architecture is really platform design: storage, identity, orchestration, monitoring, and cost control all have to work together. That is squarely cloud-engineering work.
 
 ## Official References
 

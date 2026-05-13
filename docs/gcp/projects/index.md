@@ -14,17 +14,29 @@ The Google Cloud project path is cumulative. Each project builds on the same cor
 - [Project 04: Analytics Platform](project-04-analytics-platform.md) adds data movement, curation, and query-oriented thinking.
 - [Project 05: Agentic RAG Assistant](project-05-agentic-rag-assistant.md) adds retrieval, safety, and AI platform integration.
 
-## How To Work Through The Projects
+## How To Use The Project Path
 
 Start in order unless you already understand the earlier Google Cloud operating model well. The sequence is designed so that service accounts, runtime behavior, eventing, monitoring, and cost become familiar before you add analytics or AI complexity.
 
-As you work through a project, treat it like an engineering system.
+As you work through a project, aim to capture five things every time:
 
-- Explain how the architecture works.
-- Document which identities deploy the workload and which identities run it.
-- Capture how failures become visible.
-- Note the main cost and security considerations.
-- Write down what a second iteration would improve.
+- the request or data flow,
+- the service-account and IAM model,
+- how the workload is deployed,
+- how failures or stale data become visible,
+- and what you would improve in a second version.
+
+## What Good Output Looks Like
+
+Good Google Cloud project output is not only a deployed demo. It is a project you can explain clearly.
+
+The strongest output usually includes:
+
+- why the chosen services fit the workload,
+- how identities are separated,
+- how the system is monitored,
+- where the main cost risks live,
+- and how the design would evolve if the workload grew.
 
 ## Portfolio Goal
 

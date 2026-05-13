@@ -4,9 +4,29 @@
 
 Knowledge Bases for Amazon Bedrock connects foundation models and agent workflows to enterprise content so retrieval can be handled as part of the managed Bedrock stack.
 
+## Definition
+
+Knowledge Bases for Amazon Bedrock is AWS's managed retrieval layer for Bedrock-based AI applications. It helps teams connect approved content to model workflows so responses can be grounded in source material instead of relying only on model memory.
+
+That makes it a retrieval service, not a complete AI application. Teams still need to decide what content is indexed, who can access it, how freshness is handled, and what happens when retrieval quality is poor.
+
+In simple terms:
+
+> Knowledge Bases is the managed AWS retrieval layer that helps Bedrock applications answer from approved content instead of guessing from general model knowledge.
+
 ## What Problem It Solves
 
 It reduces the amount of custom retrieval plumbing a team has to build when an AI application needs grounded answers from approved documents or data sources.
+
+## How It Is Commonly Used
+
+It is commonly used for:
+
+- retrieval-augmented generation over internal documents,
+- document-grounded assistants,
+- Bedrock applications that need managed retrieval rather than a custom search stack,
+- systems that need retrieval connected to Bedrock agents or prompts,
+- smaller teams that want a managed RAG foundation inside AWS.
 
 ## When to Use It
 
@@ -18,6 +38,15 @@ It reduces the amount of custom retrieval plumbing a team has to build when an A
 
 - Do not use it when the workload does not need retrieval or document grounding.
 - Do not use it as a substitute for reviewing source quality, access controls, and document lifecycle.
+- Do not assume that indexing more content automatically improves answer quality.
+
+## Common Mistakes
+
+- Indexing content with poor ownership or poor quality.
+- Ignoring document-level access assumptions.
+- Treating retrieval failure as a model-quality issue instead of a content or ingestion issue.
+- Letting stale content remain in the knowledge base without refresh discipline.
+- Failing to evaluate retrieval quality separately from model output quality.
 
 ## Cloud Engineering Considerations
 
@@ -40,6 +69,10 @@ Monitor retrieval quality, failed ingestion jobs, and downstream application beh
 ### Cost
 
 Costs can grow through ingestion, storage, embeddings, and repeated retrieval traffic, so keep source scope and refresh schedules intentional.
+
+## How This Fits Into Cloud Engineering
+
+Knowledge Bases matters because RAG systems are not only model systems. They are data systems. Good cloud engineering requires clear ownership of source documents, indexing flows, access boundaries, freshness expectations, and retrieval quality.
 
 ## Related Projects
 

@@ -14,17 +14,29 @@ The Azure project path is cumulative. Each project layers more delivery and oper
 - [Project 04: Analytics Platform](project-04-analytics-platform.md) extends the path into data movement, curation, and analytics workloads.
 - [Project 05: Agentic RAG Assistant](project-05-agentic-rag-assistant.md) adds AI services, retrieval, safety, and higher-complexity runtime concerns.
 
-## How To Work Through The Projects
+## How To Use The Project Path
 
 Start in order unless you already have strong experience with the earlier Azure concepts. The point of the sequence is to let identity, deployment, observability, and cost concerns compound gradually instead of all at once.
 
-As you work through a project, document more than resource creation.
+As you work through a project, try to capture five things every time:
 
-- Explain how identity and RBAC are handled.
-- Describe how traffic reaches the application.
-- Show where secrets and data live.
-- Add logs, metrics, and alerts where they matter.
-- Capture tradeoffs and next improvements.
+- the main request or data flow,
+- the Azure identity and RBAC model,
+- where secrets and data live,
+- how failures become visible,
+- and what the next iteration would improve.
+
+## What Good Output Looks Like
+
+Good Azure project output is not just "the resources deployed successfully." It is a small architecture story that shows judgment.
+
+The strongest output usually explains:
+
+- why the chosen Azure services fit,
+- how identities are separated between deployment and runtime,
+- how traffic or data moves through the system,
+- what the main cost and security considerations are,
+- and how the workload would be operated after launch.
 
 ## Portfolio Goal
 

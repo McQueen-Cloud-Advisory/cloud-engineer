@@ -24,6 +24,18 @@ Read a pattern page before you build when you want the architecture intent to be
 
 Pattern pages are also useful for comparing the same architecture across providers. That helps you separate the pattern itself from the AWS-specific implementation.
 
+## What Good Pattern Learning Looks Like
+
+You are using these pages well if they help you answer questions like these:
+
+- What problem shape does this pattern solve?
+- Why does AWS make this pattern feel the way it does?
+- Which service choices are essential and which are optional?
+- What are the main security, reliability, and cost risks?
+- When should a team choose a different pattern instead?
+
+Pattern thinking is useful because it keeps you from learning cloud only as a list of products.
+
 ## How This Fits Into Cloud Engineering
 
 Cloud engineers often need to explain not just what they built, but why the architecture is shaped a certain way. Pattern thinking helps you recognize reusable design ideas and communicate them more clearly.

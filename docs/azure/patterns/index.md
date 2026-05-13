@@ -24,6 +24,18 @@ Read a pattern page before building when you want the architecture intent to be 
 
 Pattern pages are also useful when comparing Azure to AWS or Google Cloud because they make the shared architecture visible underneath the provider-specific terminology.
 
+## What Good Pattern Learning Looks Like
+
+You are using these pages well if they help you answer questions like these:
+
+- What recurring workload shape does this pattern represent?
+- Why does Azure make this pattern feel the way it does?
+- Which services are core and which are supporting?
+- What are the main security, reliability, and cost risks?
+- When should the team choose a different pattern or a simpler design?
+
+That is what turns provider familiarity into architecture judgment.
+
 ## How This Fits Into Cloud Engineering
 
 Cloud engineers need reusable ways of thinking about systems, not only lists of services. Pattern pages build that skill by helping you connect architecture shape to implementation and communication.

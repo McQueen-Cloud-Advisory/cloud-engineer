@@ -4,9 +4,29 @@
 
 Model Garden is Google Cloud's catalog of models and related options available through Vertex AI.
 
+## Definition
+
+Model Garden is the model-discovery and selection layer within Vertex AI. It helps teams browse, compare, and choose model options without building a separate procurement or integration path for each model source.
+
+That sounds simple, but model selection is not a cosmetic decision. The model chosen affects latency, safety behavior, evaluation effort, integration style, and cost.
+
+In simple terms:
+
+> Model Garden is where Google Cloud teams decide which models are actually worth putting into an application.
+
 ## What Problem It Solves
 
 It helps teams compare and choose model options without building a completely separate discovery path for each provider or runtime.
+
+## How It Is Commonly Used
+
+It is commonly used for:
+
+- comparing model options for a workload,
+- evaluating quality, latency, and cost tradeoffs,
+- selecting models for RAG or agentic applications,
+- giving teams a clearer inventory of available models and capabilities,
+- reducing the friction of model experimentation inside Google Cloud.
 
 ## When to Use It
 
@@ -18,6 +38,15 @@ It helps teams compare and choose model options without building a completely se
 
 - Do not choose models only on brand or benchmark assumptions without workload-specific evaluation.
 - Do not expand model choice faster than the team can test and govern it.
+- Do not treat model selection as a one-time technical choice with no operational impact.
+
+## Common Mistakes
+
+- Choosing a model based on reputation instead of workload fit.
+- Ignoring how cost changes at production volume.
+- Letting too many models into the platform without governance.
+- Measuring prompt quality but not safety, latency, or failure behavior.
+- Treating evaluation as optional because the first demo looks good.
 
 ## Cloud Engineering Considerations
 
@@ -40,6 +69,10 @@ Track which models are used, how they perform, and whether outcomes meet the app
 ### Cost
 
 Different models can have very different cost profiles, so evaluation should include spend as well as quality.
+
+## How This Fits Into Cloud Engineering
+
+Model Garden matters because choosing a model is also choosing an operating profile. Cloud engineering in AI includes deciding which models the platform should allow, how they are evaluated, and how their cost and behavior are monitored over time.
 
 ## Related Projects
 

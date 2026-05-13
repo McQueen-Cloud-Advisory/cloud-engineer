@@ -10,6 +10,19 @@ A small analytics platform on Azure commonly starts with Blob Storage as a landi
 
 This pattern matters because analytics systems require attention to data organization, permissions, freshness, and monitoring. They are not only storage projects.
 
+## When This Pattern Fits
+
+Use this pattern when:
+
+- data must move from source systems into an analytical form,
+- the team needs a clear raw-to-curated path,
+- reporting or shared analytics access matters,
+- and the platform should grow in a controlled way instead of starting as a large all-at-once design.
+
+## When Not to Use It
+
+Do not use this pattern when the workload is only a simple application export, when the consumers are not yet known, or when the team is trying to solve a data-governance problem with tooling alone.
+
 ## Common Use Cases
 
 - Data ingestion and reporting
@@ -25,6 +38,10 @@ Data source
 -> Curated analytics layer
 -> Monitoring and reporting
 ```
+
+## Why This Pattern Works
+
+It works because Azure can separate ingestion, landing storage, transformation, and reporting into clear layers. That makes identity boundaries, freshness expectations, and operational ownership easier to define than in a loosely connected collection of scripts and reports.
 
 ## Provider Services
 
@@ -55,9 +72,21 @@ Storage, orchestration, and analytical platform capacity are the main cost areas
 
 Build the platform incrementally so the data flow stays explainable and easy to operate.
 
+## Common Mistakes
+
+- Treating Blob Storage as the entire analytics strategy.
+- Skipping raw-versus-curated separation.
+- Giving broad access before data sensitivity is understood.
+- Ignoring freshness and focusing only on pipeline completion.
+- Buying more analytics platform capacity than the use case needs.
+
 ## Related Projects
 
 - [Project 04: Analytics Platform](../projects/project-04-analytics-platform.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern matters because analytics platforms combine data movement, permissions, storage design, and operations. Cloud engineers need to make those concerns work together, not just provision the services.
 
 ## Official References
 

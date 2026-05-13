@@ -1,45 +1,49 @@
 # Azure Container Apps
 
-## Purpose
+## Definition
 
-Azure Container Apps runs containerized applications on a managed platform designed for modern web services and event-driven apps.
+Azure Container Apps is a managed application platform for running containerized services and background workloads without managing a full Kubernetes environment.
 
-## What Problem It Solves
+It matters because many teams need container packaging flexibility but do not want the operational surface area of a full orchestrator. Container Apps fills that middle ground between functions and heavier container platforms.
 
-It gives teams a simpler way to run containers without managing a full orchestrator while still supporting HTTP and background workloads.
+## How It Is Commonly Used
 
-## When to Use It
+Azure Container Apps is commonly used for containerized APIs, internal tools, AI application fronts, and background workers. Teams often choose it when they want to package an application as a container, expose it over HTTP or internal networking, and connect it to services such as Key Vault, Azure AI, or storage.
 
-- Use it for containerized APIs and application fronts.
-- Use it when a workload needs more packaging control than a function platform provides.
-- Use it for managed container hosting that integrates with Azure identity and monitoring services.
+It is especially useful when revisions, scale behavior, and managed runtime operations matter more than low-level cluster control.
 
-## When Not to Use It
-
-- Do not use it when the workload requires deep orchestrator-level control that the service does not expose.
-- Do not assume container hosting removes the need for secret, image, and scaling review.
-
-## Cloud Engineering Considerations
+## What To Pay Attention To
 
 ### Identity and Access
 
-Separate deployment permissions from runtime permissions and prefer managed identities for downstream access.
+Separate deployment permissions from runtime permissions and prefer managed identities for downstream access. The application runtime should not inherit the same privileges as the team or pipeline that deploys it.
 
 ### Networking
 
-Review ingress exposure, internal versus external apps, and how the app reaches data or model services.
+Review ingress exposure, internal versus external apps, and how the service reaches data stores, APIs, or model endpoints. Networking choices shape both security posture and operational behavior.
 
 ### Security
 
-Keep images current, restrict secrets, and review public exposure deliberately.
+Keep images current, restrict secrets, and review public exposure deliberately. Container packaging gives flexibility, but it also shifts more responsibility onto image hygiene and dependency review.
 
-### Observability
+### Operations and Observability
 
-Monitor requests, revisions, scaling behavior, and container logs as part of normal operations.
+Monitor requests, revisions, scaling behavior, and container logs as part of normal operations. Platform abstraction helps, but you still need to understand what version is serving traffic and how scale events affect the service.
 
 ### Cost
 
 Runtime resource choices and scale-out behavior drive cost.
+
+## Common Mistakes
+
+- Using Container Apps without deciding whether the service should be public or internal.
+- Treating containers as a reason to ignore identity and secret design.
+- Skipping image lifecycle review because the platform is managed.
+- Choosing it for workloads that really need a different runtime model.
+
+## How This Fits Into Cloud Engineering
+
+Azure Container Apps is a good example of managed platform engineering. Cloud engineers still need to design deployment, identity, ingress, observability, and cost boundaries even when the platform removes the cluster-management burden.
 
 ## Related Projects
 

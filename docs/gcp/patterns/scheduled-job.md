@@ -8,7 +8,20 @@ This pattern explains how to run recurring workloads on Google Cloud using manag
 
 A scheduled job pattern on Google Cloud commonly uses Cloud Scheduler to publish to Pub/Sub and a downstream runtime such as Cloud Functions to do the work. That creates a managed recurring pipeline without operating a dedicated scheduler host.
 
-This pattern matters because recurring workloads need more than a cron expression. They need secret handling, retry strategy, landing storage, and monitoring if they are going to run reliably over time.
+This pattern matters because recurring workloads need more than a cron expression.
+
+## When This Pattern Fits
+
+Use this pattern when:
+
+- work needs to happen on a predictable schedule,
+- asynchronous triggering is useful,
+- the job can run as a small managed runtime,
+- and the team wants clear separation between the scheduler, queue, and worker.
+
+## When Not to Use It
+
+Do not use this pattern when the workflow needs deeper orchestration, long-lived stateful execution, or a much simpler path than scheduler-plus-messaging.
 
 ## Common Use Cases
 
@@ -26,6 +39,10 @@ Schedule
 -> Storage or downstream API
 -> Monitoring
 ```
+
+## Why This Pattern Works
+
+It works because Google Cloud separates the recurring trigger, message delivery, worker logic, and monitoring model clearly. That makes retries, delayed processing, and operational visibility easier to reason about than in a one-piece script.
 
 ## Provider Services
 
@@ -58,9 +75,21 @@ The base schedule is inexpensive, but repeated processing, storage, and telemetr
 
 Treat the scheduler, messaging, runtime, and monitoring definitions as one deployable system.
 
+## Common Mistakes
+
+- Monitoring only the schedule and not the worker or the data result.
+- Ignoring duplicate deliveries or retries.
+- Letting service accounts or topic permissions become too broad.
+- Storing external secrets unsafely.
+- Treating a scheduled job like a throwaway automation instead of a production workload.
+
 ## Related Projects
 
 - [Project 03: Scheduled API Ingestion](../projects/project-03-scheduled-api-ingestion.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern matters because recurring automation is part of normal cloud operations. Good cloud engineering makes these jobs secure, observable, and easy to reason about when they fail or drift.
 
 ## Official References
 

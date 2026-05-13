@@ -1,45 +1,49 @@
 # Application Insights
 
-## Purpose
+## Definition
 
-Application Insights collects application telemetry for Azure workloads, including requests, dependencies, failures, and performance data.
+Application Insights is Azure's application telemetry service for requests, dependencies, failures, traces, and performance behavior.
 
-## What Problem It Solves
+It matters because infrastructure metrics alone rarely explain why an application is slow, failing, or producing poor user outcomes. Cloud engineers need visibility into the request path and dependency behavior, not only whether the host is alive.
 
-It helps teams understand runtime behavior and troubleshoot application issues beyond infrastructure-level metrics alone.
+## How It Is Commonly Used
 
-## When to Use It
+Application Insights is commonly used with Azure Functions, containerized apps, and API workloads to understand latency, exceptions, dependency calls, and overall request flow. Teams often use it alongside Azure Monitor so application-level telemetry and broader platform monitoring work together.
 
-- Use it to monitor application performance and failures.
-- Use it when distributed request visibility matters for APIs or background jobs.
-- Use it with Azure Monitor to build a stronger operational picture for cloud applications.
+It is especially useful when a system needs correlation across components instead of isolated logs from each service.
 
-## When Not to Use It
-
-- Do not assume default telemetry is enough for every workload.
-- Do not capture sensitive data carelessly in traces or custom events.
-
-## Cloud Engineering Considerations
+## What To Pay Attention To
 
 ### Identity and Access
 
-Control who can view telemetry and who can change alerting or data retention settings.
+Control who can view telemetry and who can change alerting, sampling, or data-retention settings. Operational data can be sensitive and should not be treated as universally visible.
 
 ### Networking
 
-Review how telemetry is emitted from runtimes and whether network restrictions affect collection.
+Review how telemetry is emitted from runtimes and whether network restrictions affect collection. Observability gaps often appear as partial data rather than explicit platform failures.
 
 ### Security
 
-Treat logs and traces as potentially sensitive data and manage access and retention accordingly.
+Treat logs, traces, and custom events as potentially sensitive data. Avoid capturing secrets, personal data, or payloads carelessly just because instrumentation makes it easy.
 
-### Observability
+### Operations and Observability
 
-Use Application Insights for request tracing, dependency visibility, error investigation, and alerting inputs.
+Use Application Insights for request tracing, dependency visibility, error investigation, and alerting inputs. Default telemetry is a starting point, not a complete monitoring strategy.
 
 ### Cost
 
-Telemetry volume, retention, and high-cardinality custom events can increase cost.
+Telemetry volume, retention, and high-cardinality custom events can increase cost quickly. Instrument intentionally.
+
+## Common Mistakes
+
+- Assuming default instrumentation tells the whole story.
+- Logging sensitive values in traces or custom events.
+- Capturing so much telemetry that useful signals are buried in noise.
+- Looking only at request failures and not at dependency degradation or latency patterns.
+
+## How This Fits Into Cloud Engineering
+
+Application Insights is where application behavior becomes operationally visible. Cloud engineers need that view because reliability depends on understanding request paths, failure patterns, and the gap between infrastructure health and user experience.
 
 ## Related Projects
 

@@ -4,6 +4,12 @@
 
 Build an agentic retrieval-augmented assistant so you practice AI runtime integration, retrieval, guardrails, and operational governance in one workload.
 
+## Scenario
+
+Assume a team wants an internal assistant that can answer questions from approved documents, possibly use tools, and behave safely enough for real users. A simple prompt demo is not enough. The system needs model access, retrieval over governed content, runtime identity, safety controls, secrets, and monitoring.
+
+This project is useful because it forces you to treat AI as a real application system instead of as a standalone model experiment.
+
 ## Architecture
 
 ```text
@@ -14,6 +20,17 @@ User request
 -> Guardrails for Amazon Bedrock
 -> Amazon CloudWatch and AWS Secrets Manager
 ```
+
+## What You Will Build
+
+- A user-facing application endpoint.
+- A grounded AI workflow with retrieval over approved content.
+- Guardrails, secret handling, and operational visibility for the AI path.
+- A documented explanation of model access, retrieval, and safety boundaries.
+
+## Why This Architecture Works
+
+Bedrock provides model access, Knowledge Bases adds managed retrieval, and Bedrock Agents can handle multi-step behavior when needed. Guardrails gives the system a managed safety checkpoint, while App Runner or API Gateway provides a controlled entry path. Secrets Manager and CloudWatch complete the security and observability story.
 
 ## Services Used
 
@@ -26,36 +43,37 @@ User request
 - [AWS Secrets Manager](../services/secrets-manager.md)
 - [Amazon CloudWatch](../services/cloudwatch.md)
 
-## What You Will Build
-
-- A user-facing application endpoint.
-- A grounded AI workflow with retrieval over approved content.
-- Guardrails, secret handling, and operational visibility for the AI path.
-
 ## Skills Practiced
 
 - AI application integration
 - Managed retrieval design
 - Agent workflow planning
 - AI safety and observability
+- Explaining AI workloads as cloud systems
 
-## Implementation Notes
+## Implementation Steps
 
-Keep the first version narrow. Use a small knowledge corpus, define the tool or agent boundaries clearly, and make logging, prompt review, and access boundaries part of the implementation from the start.
+1. Define the assistant's scope, users, approved knowledge corpus, and success criteria.
+2. Choose the application entry point and runtime model for the user-facing experience.
+3. Configure Bedrock model access and connect retrieval over the approved content set.
+4. Add agent behavior only if the use case truly needs tools or multi-step execution.
+5. Apply guardrails, secrets handling, logging, and monitoring before calling the system production-ready.
+6. Document how prompts, retrieval, tool use, safety controls, and failures are handled end to end.
 
-## Security Considerations
+## Security and Operations Considerations
 
-Review who can access the application, what content is indexed, how secrets are stored, and how the system should respond to unsafe or adversarial input.
+Review who can access the application, what content is indexed, how secrets are stored, and how the system should respond to unsafe or adversarial input. The important operational question is not only whether the assistant answers correctly. It is whether the team can tell when retrieval quality, latency, or safety behavior has degraded.
 
 ## Cost Considerations
 
-Model usage, retrieval, guardrails, and supporting runtime resources can add up quickly. Limit the scope of testing and monitor usage patterns closely.
+Model usage, retrieval, guardrails, and supporting runtime resources can add up quickly. Limit the scope of testing, define evaluation boundaries, and monitor usage patterns closely.
 
 ## How to Extend This Project
 
 - Add user authentication and tenant separation.
 - Add feedback capture and evaluation workflows.
 - Add deployment automation and model usage dashboards.
+- Add more explicit tool-calling workflows with narrow permissions.
 
 ## Portfolio Value
 

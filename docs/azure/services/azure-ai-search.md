@@ -4,9 +4,29 @@
 
 Azure AI Search provides managed indexing and search capabilities that are often used as a retrieval layer for AI applications.
 
+## Definition
+
+Azure AI Search is Azure's managed indexing and retrieval service for content that needs to be searchable, filterable, and rankable. In AI workloads, it commonly serves as the retrieval layer in RAG systems, where the quality of retrieved context strongly affects the quality of the final answer.
+
+That means it should not be treated as only a search box. It is often a central data-access layer for AI applications.
+
+In simple terms:
+
+> Azure AI Search is the retrieval engine that helps Azure AI applications find the right context before the model answers.
+
 ## What Problem It Solves
 
 It helps applications search and retrieve relevant content efficiently instead of building search infrastructure from scratch.
+
+## How It Is Commonly Used
+
+It is commonly used for:
+
+- retrieval-augmented generation,
+- enterprise search over documents and knowledge sources,
+- ranking and filtering content before passing it to a model,
+- internal assistants over curated business content,
+- AI applications that need a managed search layer integrated with the wider Azure platform.
 
 ## When to Use It
 
@@ -18,6 +38,15 @@ It helps applications search and retrieve relevant content efficiently instead o
 
 - Do not use it when the workload does not need search or retrieval features.
 - Do not assume indexing alone solves content quality, access control, or grounding quality problems.
+- Do not confuse a successful index build with a trustworthy RAG system.
+
+## Common Mistakes
+
+- Indexing content without clear ownership, freshness, or relevance review.
+- Ignoring document-level access needs in user-facing retrieval workflows.
+- Measuring search latency but not search quality.
+- Passing too much low-value context to the model.
+- Treating retrieval problems as only model problems.
 
 ## Cloud Engineering Considerations
 
@@ -40,6 +69,10 @@ Monitor indexing failures, query latency, and search quality in the context of t
 ### Cost
 
 Index size, replicas, partitions, and query volume all affect cost.
+
+## How This Fits Into Cloud Engineering
+
+Azure AI Search matters because many AI workloads fail or succeed based on retrieval quality more than model quality. Cloud engineering in AI includes deciding what content is searchable, how it is protected, how it stays fresh, and how retrieval quality is evaluated over time.
 
 ## Related Projects
 

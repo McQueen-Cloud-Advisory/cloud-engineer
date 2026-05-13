@@ -10,6 +10,19 @@ A static site pattern on Azure commonly starts with Blob Storage static website 
 
 This pattern matters because it introduces access control, public delivery boundaries, deployment workflows, and low-cost web hosting without requiring a full application runtime.
 
+## When This Pattern Fits
+
+Use this pattern when:
+
+- the workload is mostly static content,
+- the team wants very little runtime operations overhead,
+- the access model is simple enough to manage through storage hosting and Azure identity,
+- and the main goal is predictable publishing rather than dynamic application behavior.
+
+## When Not to Use It
+
+Do not use this pattern when the site needs complex server-side behavior, heavy per-user state, or backend processing at request time.
+
 ## Common Use Cases
 
 - Documentation sites
@@ -24,6 +37,10 @@ Client
 -> Azure Blob Storage static website hosting
 -> Azure Monitor
 ```
+
+## Why This Pattern Works
+
+It works because the workload is really a content-delivery problem, not an application-hosting problem. Azure Blob Storage handles the content, Entra ID and RBAC handle deployment access, and Azure Monitor gives the pattern a basic operations story.
 
 ## Provider Services
 
@@ -54,9 +71,20 @@ This pattern is usually inexpensive, but data transfer and optional edge service
 
 Prefer a repeatable deployment path over manual file uploads so content changes are predictable.
 
+## Common Mistakes
+
+- Treating a public storage-hosted site as if it needs no access-control story.
+- Leaving deployment permissions too broad.
+- Skipping rollback or versioning planning.
+- Adding edge services without revisiting logging and exposure decisions.
+
 ## Related Projects
 
 - [Project 01: Static Site](../projects/project-01-static-site.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern is a good reminder that simple workloads still need deliberate access design, deployment discipline, and monitoring. That is what makes them useful cloud-engineering projects instead of only hosting demos.
 
 ## Official References
 

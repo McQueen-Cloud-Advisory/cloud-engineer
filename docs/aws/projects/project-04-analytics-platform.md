@@ -4,6 +4,12 @@
 
 Build a small analytics platform so you practice batch ingestion, layered data storage, query access, and operational oversight.
 
+## Scenario
+
+Assume a team needs to collect data from one or more sources, store it durably, transform it into a cleaner analytical shape, and query it for reporting or inspection. The platform does not need to be huge to be valuable. It needs to show clear movement from raw data to curated data and make that flow easy to explain.
+
+This project is useful because it moves you from application-centric cloud work into data-platform thinking.
+
 ## Architecture
 
 ```text
@@ -14,6 +20,17 @@ Scheduled or event-driven ingestion
 -> Amazon CloudWatch
 ```
 
+## What You Will Build
+
+- A raw and curated data layout in object storage.
+- A simple transformation or cataloging flow.
+- A queryable analytics layer for reporting or inspection.
+- Monitoring or visibility around ingestion, freshness, and query activity.
+
+## Why This Architecture Works
+
+S3 gives the platform a durable raw and curated storage boundary. EventBridge and Lambda can orchestrate ingestion or lightweight transformation. Glue and Athena provide a practical managed path for cataloging and querying without building a full warehouse platform from scratch. CloudWatch keeps the data flow observable.
+
 ## Services Used
 
 - [Amazon S3](../services/s3.md)
@@ -23,40 +40,41 @@ Scheduled or event-driven ingestion
 - AWS Glue
 - Amazon Athena
 
-## What You Will Build
-
-- A raw and curated data layout in object storage.
-- A simple transformation or cataloging flow.
-- A queryable analytics layer for reporting or inspection.
-
 ## Skills Practiced
 
 - Analytics data flow design
 - Data lake organization
 - Scheduled transformation
 - Monitoring data platform operations
+- Explaining raw versus curated storage clearly
 
-## Implementation Notes
+## Implementation Steps
 
-Start with a small dataset and a simple raw-to-curated layout in S3. Add cataloging and querying only after the ingestion path and data shape are understandable.
+1. Choose a small dataset and define the raw, curated, and queryable outcomes you want.
+2. Create the raw landing zone in S3 and decide how files, partitions, or prefixes should be organized.
+3. Build the ingestion and transformation steps using lightweight automation first.
+4. Add cataloging and a query layer so the curated data can be inspected with SQL.
+5. Add monitoring for pipeline failures, delayed data, and unexpected storage or query behavior.
+6. Document how data moves through the platform and where governance or access boundaries matter.
 
-## Security Considerations
+## Security and Operations Considerations
 
-Review who can access raw versus curated data, how credentials are handled, and whether any sensitive data needs masking or partitioned access.
+Review who can access raw versus curated data, how credentials are handled, and whether any sensitive data needs masking or partitioned access. Analytics platforms often fail operationally through silent staleness or confusing ownership rather than through obvious runtime crashes.
 
 ## Cost Considerations
 
-Storage growth, repeated queries, and transformation frequency can all increase cost. Keep the dataset and query scope intentionally small at first.
+Storage growth, repeated queries, and transformation frequency can all increase cost. Keep the dataset and query scope intentionally small at first, and explain where the main spend risks would grow.
 
 ## How to Extend This Project
 
 - Add partitioning and lifecycle rules.
 - Add a dashboarding layer.
 - Add data quality and freshness checks.
+- Add separate raw, trusted, and curated zones.
 
 ## Portfolio Value
 
-This project demonstrates that you can think beyond application hosting and explain the data handling, transformation, and operational concerns of an analytics workload.
+This project demonstrates that you can think beyond application hosting and explain the data handling, transformation, storage, and operational concerns of an analytics workload on AWS.
 
 ## Official References
 

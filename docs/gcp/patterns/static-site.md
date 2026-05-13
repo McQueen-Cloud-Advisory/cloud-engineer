@@ -10,6 +10,19 @@ A static site pattern on Google Cloud commonly starts with Cloud Storage website
 
 This pattern matters because it introduces public content delivery, deployment discipline, and access control without requiring an application server.
 
+## When This Pattern Fits
+
+Use this pattern when:
+
+- the workload is mostly static files,
+- the team wants low runtime overhead,
+- the publishing path can be kept simple,
+- and the main architectural concern is public delivery rather than dynamic logic.
+
+## When Not to Use It
+
+Do not use this pattern when the workload needs complex server-side logic, deep per-user state, or backend processing on every request.
+
 ## Common Use Cases
 
 - Documentation sites
@@ -24,6 +37,10 @@ Client
 -> Cloud Storage static website hosting
 -> Monitoring
 ```
+
+## Why This Pattern Works
+
+It works because static content is fundamentally a storage and delivery problem. Google Cloud lets the team keep storage, deployment identity, and monitoring separate enough to operate the site cleanly without introducing a full application runtime.
 
 ## Provider Services
 
@@ -53,9 +70,20 @@ This pattern is usually inexpensive, but data transfer and optional edge service
 
 Deploy content through a repeatable workflow rather than ad hoc manual uploads wherever possible.
 
+## Common Mistakes
+
+- Treating a public bucket as if it needs no deployment or access story.
+- Leaving publishing access too broad.
+- Skipping rollback planning.
+- Adding edge services without revisiting logging and exposure controls.
+
 ## Related Projects
 
 - [Project 01: Static Site](../projects/project-01-static-site.md)
+
+## How This Fits Into Cloud Engineering
+
+This pattern is valuable because it shows that a simple public site still needs identity boundaries, deployment discipline, and basic observability. That is a small but real cloud-engineering workload.
 
 ## Official References
 

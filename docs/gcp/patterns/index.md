@@ -24,6 +24,18 @@ Read a pattern page before building when you want the architecture intent to be 
 
 Pattern pages are especially useful for separating the shared architecture from the Google Cloud-specific implementation details.
 
+## What Good Pattern Learning Looks Like
+
+You are using these pages well if they help you answer questions like these:
+
+- What recurring workload shape is this page describing?
+- Why does Google Cloud make this pattern feel the way it does?
+- Which services are required and which are optional?
+- What are the main operational risks?
+- What changes if the workload grows or the access model tightens?
+
+That is the kind of thinking that makes patterns more useful than memorized product mappings.
+
 ## How This Fits Into Cloud Engineering
 
 Cloud engineers need reusable thinking, not only service familiarity. Pattern pages build that skill by helping you recognize common system shapes and explain them clearly across provider contexts.

@@ -1,45 +1,49 @@
 # Azure Key Vault
 
-## Purpose
+## Definition
 
-Azure Key Vault stores secrets, keys, and certificates for Azure applications and automation.
+Azure Key Vault is Azure's managed service for storing and controlling access to secrets, keys, and certificates.
 
-## What Problem It Solves
+It matters because secret handling is not only a storage problem. Teams need to decide who can read sensitive values, how workloads retrieve them, how rotation works, and how access is audited over time.
 
-It keeps sensitive values out of code and configuration while giving applications a managed retrieval path.
+## How It Is Commonly Used
 
-## When to Use It
+Azure Key Vault is commonly used to hold application secrets, certificates, and integration credentials for Functions, Container Apps, automation pipelines, and other Azure services. In a well-designed environment, workloads retrieve only the values they need at runtime, usually through managed identities rather than embedded credentials.
 
-- Use it for application secrets, credentials, and certificates.
-- Use it when workloads need controlled secret retrieval at runtime.
-- Use it to support separation between operators, deployments, and runtime access.
+Key Vault is most useful when it is part of a broader identity and deployment design instead of an isolated security checkbox.
 
-## When Not to Use It
-
-- Do not hard-code secrets into applications or pipelines.
-- Do not grant vault-wide access to workloads that only need a small subset of secrets.
-
-## Cloud Engineering Considerations
+## What To Pay Attention To
 
 ### Identity and Access
 
-Use RBAC or access policies deliberately and prefer managed identities for runtime secret access.
+Use RBAC or access policies deliberately and prefer managed identities for runtime secret access. Vault-wide read access is usually broader than the workload requires.
 
 ### Networking
 
-Review private endpoints and how workloads reach the vault across environments.
+Review private endpoints and how workloads reach the vault across environments. Secret access failures often show up as application startup problems or intermittent runtime errors.
 
 ### Security
 
-Treat secret naming, rotation, and access logging as part of the security design, not just storage details.
+Treat secret naming, rotation, and access logging as part of the security design, not just storage details. A secret that exists but is never rotated or reviewed is still a risk.
 
-### Observability
+### Operations and Observability
 
-Track access failures and unusual access patterns so credential problems surface quickly.
+Track access failures and unusual access patterns so credential problems surface quickly. Secret platforms are operational dependencies, not background utilities.
 
 ### Cost
 
 Operation volume and premium features can increase cost, so remove unused secrets and avoid noisy access patterns.
+
+## Common Mistakes
+
+- Granting broad vault access when a workload needs only one or two values.
+- Using the vault without a clear rotation plan.
+- Treating Key Vault as a reason to ignore authorization design elsewhere.
+- Forgetting that networking restrictions can break secret retrieval in production.
+
+## How This Fits Into Cloud Engineering
+
+Key Vault sits at the center of identity, secret management, deployment safety, and runtime access. Cloud engineers need to treat it as part of the system design because credential handling shapes both security posture and operational reliability.
 
 ## Related Projects
 

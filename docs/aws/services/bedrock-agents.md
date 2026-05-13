@@ -4,9 +4,29 @@
 
 Agents for Amazon Bedrock orchestrates model reasoning, tools, and multi-step execution inside a managed AWS service.
 
+## Definition
+
+Agents for Amazon Bedrock is AWS's managed orchestration layer for AI workflows that need more than a single prompt-and-response exchange. It can combine model calls, tool use, retrieval, and step-by-step behavior inside a managed service boundary.
+
+That makes it different from Bedrock alone. Bedrock gives model access. Agents for Amazon Bedrock gives a managed way to coordinate work around those models.
+
+In simple terms:
+
+> Bedrock Agents is the managed layer that helps an AWS AI system do multi-step work instead of only returning one model response.
+
 ## What Problem It Solves
 
 It reduces custom orchestration work when an AI application needs to call tools, retrieve knowledge, and manage intermediate steps.
+
+## How It Is Commonly Used
+
+It is commonly used for:
+
+- tool-calling assistants,
+- retrieval-backed workflows,
+- multi-step reasoning flows that need managed orchestration,
+- user-facing AI systems that need structured actions beyond a single answer,
+- applications that want a managed agent layer instead of entirely custom orchestration code.
 
 ## When to Use It
 
@@ -18,6 +38,15 @@ It reduces custom orchestration work when an AI application needs to call tools,
 
 - Do not add agent orchestration before validating that the task actually needs it.
 - Do not rely on the agent framework alone for security, tool permissions, or output review.
+- Do not assume a multi-step agent is automatically better than a simpler workflow.
+
+## Common Mistakes
+
+- Adding agent behavior before a basic prompt or retrieval workflow works reliably.
+- Giving the agent overly broad tool or data access.
+- Ignoring how tool failures or slow dependencies affect the user experience.
+- Measuring only model latency instead of full orchestration latency.
+- Treating a managed agent as if it removes the need for evaluation and safety review.
 
 ## Cloud Engineering Considerations
 
@@ -40,6 +69,10 @@ Track agent failures, tool call behavior, and outcome quality, not just raw mode
 ### Cost
 
 Agent orchestration can increase overall model and retrieval usage, so observe multi-step execution cost.
+
+## How This Fits Into Cloud Engineering
+
+Bedrock Agents matters because orchestration is where many AI systems stop being demos and start behaving like applications. Once tools, data, and multi-step behavior exist, cloud engineering has to account for permissions, failure handling, and runtime operations clearly.
 
 ## Related Projects
 

@@ -1,45 +1,49 @@
 # AWS App Runner
 
-## Purpose
+## Definition
 
-AWS App Runner runs containerized or source-based web applications behind a managed application platform.
+AWS App Runner is a managed application platform for running containerized or source-based web applications on AWS.
 
-## What Problem It Solves
+It matters because many workloads need more packaging flexibility than a function platform provides but do not need the operational overhead of a full container orchestrator. App Runner occupies that middle space.
 
-It gives teams a simpler path to deploy containerized web services without managing a full orchestrator.
+## How It Is Commonly Used
 
-## When to Use It
+AWS App Runner is commonly used for internal tools, simple web APIs, and AI application fronts that need an HTTP endpoint and a managed runtime. Teams often pair it with ECR for image delivery, Secrets Manager for configuration, and CloudWatch for operational visibility.
 
-- Use it for HTTP applications that fit a managed container platform model.
-- Use it when you want more packaging control than a function platform provides without running Kubernetes.
-- Use it for internal tools or application fronts that can be deployed from source or container images.
+It is most useful when the service shape is straightforward and the team values fast deployment and low runtime management overhead.
 
-## When Not to Use It
-
-- Do not use it if the workload needs deep container orchestration features that App Runner does not expose.
-- Do not assume container hosting removes the need for secret management, observability, and scaling review.
-
-## Cloud Engineering Considerations
+## What To Pay Attention To
 
 ### Identity and Access
 
-Separate deployment roles, runtime roles, and registry access so the application only gets the permissions it needs.
+Separate deployment roles, runtime roles, and registry access so the application only gets the permissions it needs. The service that deploys an application should not automatically have the same access as the application at runtime.
 
 ### Networking
 
-Review ingress exposure and how the service reaches databases, APIs, or private AWS resources.
+Review ingress exposure and how the service reaches databases, APIs, or private AWS resources. App Runner simplifies hosting, but network design still controls what the application can actually do.
 
 ### Security
 
-Keep images current, protect runtime secrets, and review public endpoint exposure deliberately.
+Keep images current, protect runtime secrets, and review public endpoint exposure deliberately. Managed hosting reduces platform work, not application responsibility.
 
-### Observability
+### Operations and Observability
 
-Monitor request behavior, deployment status, and container logs so application health stays visible.
+Monitor request behavior, deployment status, and container logs so application health stays visible. Teams often need to think about revision behavior and rollback just as carefully as they would on a larger platform.
 
 ### Cost
 
 Runtime hours and scaling behavior determine cost, so idle services and oversized configurations matter.
+
+## Common Mistakes
+
+- Choosing App Runner without checking whether the workload really fits an HTTP service model.
+- Treating container hosting as if it eliminates secret and identity design.
+- Forgetting to review how the service reaches private dependencies.
+- Ignoring deployment and revision visibility because the platform feels simple.
+
+## How This Fits Into Cloud Engineering
+
+App Runner is useful because it shows what managed application hosting does and does not remove. Cloud engineers still own identity, runtime configuration, network reachability, observability, and deployment quality.
 
 ## Related Projects
 
