@@ -1,28 +1,32 @@
 # Azure Patterns
 
-This section explains reusable architecture patterns using Azure.
+## Purpose
 
-Patterns describe the design. Projects show the implementation.
+This section explains reusable Azure architecture patterns and focuses on why a design takes a certain shape inside Azure.
+
+## What Pattern Pages Are For
+
+Pattern pages help you recognize a repeatable workload, understand the tradeoffs behind it, and map that design to Azure services. They sit between theory and implementation.
+
+Patterns describe the design. Projects show one implementation of that design.
 
 ## Current Patterns
 
-- Static Site
-- Serverless API
-- Scheduled Job
-- Analytics Platform
-- Agentic RAG Assistant
+- [Static Site](static-site.md) explains how to deliver simple public content with low operational overhead.
+- [Serverless API](serverless-api.md) focuses on request handling, identity, secrets, and managed runtime choices.
+- [Scheduled Job](scheduled-job.md) shows how Azure services can support recurring automation and integration workflows.
+- [Analytics Platform](analytics-platform.md) frames data movement, storage, and analytics as one operating system.
+- [Agentic RAG Assistant](agentic-rag-assistant.md) connects AI services, retrieval, safety, and runtime operations into one pattern.
 
-## Pattern Pages
+## How To Use These Pages
 
-- [Static Site](static-site.md)
-- [Serverless API](serverless-api.md)
-- [Scheduled Job](scheduled-job.md)
-- [Analytics Platform](analytics-platform.md)
-- [Agentic RAG Assistant](agentic-rag-assistant.md)
+Read a pattern page before building when you want the architecture intent to be clear. Read it again after implementation when you want to explain why the design works, which tradeoffs it makes, and how Azure services support it.
 
-## How to Use These Pages
+Pattern pages are also useful when comparing Azure to AWS or Google Cloud because they make the shared architecture visible underneath the provider-specific terminology.
 
-Use pattern pages to understand the architecture before building the related project.
+## How This Fits Into Cloud Engineering
+
+Cloud engineers need reusable ways of thinking about systems, not only lists of services. Pattern pages build that skill by helping you connect architecture shape to implementation and communication.
 
 ## Official References
 

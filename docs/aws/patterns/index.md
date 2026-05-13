@@ -1,28 +1,32 @@
 # AWS Patterns
 
-This section explains reusable architecture patterns using AWS.
+## Purpose
 
-Patterns describe the design. Projects show the implementation.
+This section explains reusable AWS architecture patterns and focuses on why a design is shaped the way it is, not only which services appear in it.
+
+## What Pattern Pages Are For
+
+Pattern pages sit between concepts and implementation. They help you recognize a repeatable workload shape, understand the tradeoffs behind it, and connect those tradeoffs to AWS services.
+
+Patterns describe the design. Projects show one implementation of that design.
 
 ## Current Patterns
 
-- Static Site
-- Serverless API
-- Scheduled Job
-- Analytics Platform
-- Agentic RAG Assistant
+- [Static Site](static-site.md) shows a low-operations public delivery pattern built around storage and simple hosting.
+- [Serverless API](serverless-api.md) focuses on request handling, runtime identity, and managed application delivery.
+- [Scheduled Job](scheduled-job.md) explains recurring automation and event-driven execution.
+- [Analytics Platform](analytics-platform.md) frames ingestion, storage, and analytics as one system.
+- [Agentic RAG Assistant](agentic-rag-assistant.md) shows how AI workloads still depend on identity, safety, observability, and application runtime design.
 
-## Pattern Pages
+## How To Use These Pages
 
-- [Static Site](static-site.md)
-- [Serverless API](serverless-api.md)
-- [Scheduled Job](scheduled-job.md)
-- [Analytics Platform](analytics-platform.md)
-- [Agentic RAG Assistant](agentic-rag-assistant.md)
+Read a pattern page before you build when you want the architecture intent to be clear. Read it again after you build when you want to explain why the design works, what tradeoffs it makes, and where the AWS services fit into the broader operating model.
 
-## How to Use These Pages
+Pattern pages are also useful for comparing the same architecture across providers. That helps you separate the pattern itself from the AWS-specific implementation.
 
-Use pattern pages to understand the architecture before building the related project.
+## How This Fits Into Cloud Engineering
+
+Cloud engineers often need to explain not just what they built, but why the architecture is shaped a certain way. Pattern thinking helps you recognize reusable design ideas and communicate them more clearly.
 
 ## Official References
 

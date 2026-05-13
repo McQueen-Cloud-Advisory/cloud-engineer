@@ -1,32 +1,38 @@
 # Azure Projects
 
-This section contains hands-on projects for Azure.
+## Purpose
 
-Projects are designed to produce real deployable artifacts while reinforcing cloud engineering fundamentals.
+This section contains hands-on Azure projects designed to produce real artifacts while reinforcing the Azure operating model.
 
-## Project Path
+## What The Sequence Is Meant To Build
 
-1. Static Site
-2. Serverless Contact Form
-3. Scheduled API Ingestion
-4. Analytics Platform
-5. Agentic RAG Assistant
+The Azure project path is cumulative. Each project layers more delivery and operations responsibility on top of the earlier work.
 
-## Projects
+- [Project 01: Static Site](project-01-static-site.md) introduces object storage delivery, public access choices, and deployment discipline.
+- [Project 02: Serverless Contact Form](project-02-serverless-contact-form.md) adds application hosting, secrets, data, and monitoring.
+- [Project 03: Scheduled API Ingestion](project-03-scheduled-api-ingestion.md) introduces recurring automation, integration, and operational visibility.
+- [Project 04: Analytics Platform](project-04-analytics-platform.md) extends the path into data movement, curation, and analytics workloads.
+- [Project 05: Agentic RAG Assistant](project-05-agentic-rag-assistant.md) adds AI services, retrieval, safety, and higher-complexity runtime concerns.
 
-- [Project 01: Static Site](project-01-static-site.md)
-- [Project 02: Serverless Contact Form](project-02-serverless-contact-form.md)
-- [Project 03: Scheduled API Ingestion](project-03-scheduled-api-ingestion.md)
-- [Project 04: Analytics Platform](project-04-analytics-platform.md)
-- [Project 05: Agentic RAG Assistant](project-05-agentic-rag-assistant.md)
+## How To Work Through The Projects
 
-## How to Use These Projects
+Start in order unless you already have strong experience with the earlier Azure concepts. The point of the sequence is to let identity, deployment, observability, and cost concerns compound gradually instead of all at once.
 
-Start with the static site project and move in order. Each project introduces additional services and operational concerns.
+As you work through a project, document more than resource creation.
+
+- Explain how identity and RBAC are handled.
+- Describe how traffic reaches the application.
+- Show where secrets and data live.
+- Add logs, metrics, and alerts where they matter.
+- Capture tradeoffs and next improvements.
 
 ## Portfolio Goal
 
-Each project should help produce something that can be explained in a resume, interview, or portfolio.
+Each project should produce material you can explain in a resume, interview, or portfolio. The ideal output is not just a working Azure deployment. It is a project story that shows architecture judgment and operational awareness.
+
+## How This Fits Into Cloud Engineering
+
+Projects are where provider knowledge becomes engineering skill. They force you to connect governance, identity, runtime, data, and monitoring into one system that can be explained and improved over time.
 
 ## Official References
 

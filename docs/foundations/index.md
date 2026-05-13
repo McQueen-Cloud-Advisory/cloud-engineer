@@ -2,15 +2,15 @@
 
 ## Purpose
 
-This section explains cloud engineering concepts that apply across providers. The goal is to understand the decisions behind cloud systems before focusing on product-specific terminology.
+This section explains the concepts that sit underneath every cloud platform. The goal is to understand how cloud systems are designed and operated before focusing on provider-specific service names.
 
-## What You Should Understand
+## How To Use This Section
 
-- Most cloud design questions involve the same core concerns across providers: identity, networking, compute, storage, data, observability, automation, and cost.
-- Provider services differ in naming and implementation details, but many architectural tradeoffs are shared.
-- Strong foundation knowledge makes it easier to move between cloud platforms and explain design choices clearly.
+Read the Foundations pages as a connected set, not as isolated definitions. Networking affects identity. Identity affects CI/CD. Compute choices affect observability and cost. Storage and database choices affect architecture for years. The more clearly you can see those relationships, the easier it becomes to design systems that work in production.
 
-## Sections
+If you are early in your learning path, start with the general pages and then move into the more technical building blocks. If you already know one provider well, use this section to separate durable concepts from vendor naming and defaults.
+
+## Recommended Reading Order
 
 - [What Is Cloud Engineering](what-is-cloud-engineering.md)
 - [Learning Roadmap](foundations-learning-roadmap.md)
@@ -28,9 +28,23 @@ This section explains cloud engineering concepts that apply across providers. Th
 - [Cost Management](cost-management.md)
 - [AI and Agents](ai-and-agents.md)
 
+## What Strong Foundations Look Like
+
+Strong cloud foundations mean you can explain more than which service to click. You should be able to describe:
+
+- how traffic reaches the system,
+- who or what is allowed to use it,
+- where code runs,
+- where data lives,
+- how changes are deployed,
+- how failures are detected,
+- and what cost or risk grows as the system scales.
+
+That level of understanding transfers across providers and makes later project work much more useful.
+
 ## How This Fits Into Cloud Engineering
 
-A cloud engineer uses these ideas to choose services, set guardrails, debug failures, and communicate tradeoffs. Provider pages become much easier to use once the underlying concepts are familiar.
+Cloud engineers use these ideas to choose services, set guardrails, debug failures, and explain tradeoffs to both technical and non-technical stakeholders. Provider pages make far more sense once the underlying concepts are clear.
 
 ## Official References
 

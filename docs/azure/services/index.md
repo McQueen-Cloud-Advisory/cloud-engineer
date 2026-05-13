@@ -1,8 +1,23 @@
 # Azure Services
 
-This section explains provider services from a practical cloud engineering perspective.
+## Purpose
 
-The goal is not to document every service. The goal is to explain the services used in the current learning path and project portfolio.
+This section explains Azure services from a practical cloud engineering perspective and focuses on the services that matter most in the current learning path.
+
+## How To Read This Section
+
+These pages are here to help you understand how Azure services participate in real systems, not to summarize the full Microsoft catalog. Use them to answer a smaller set of questions.
+
+- What role does this service play in an Azure workload?
+- How does it interact with identity, subscriptions, resource groups, and observability?
+- What tradeoffs come with choosing it?
+- When should it appear in a project or pattern?
+
+This is why the section works best when you read it alongside a project or pattern instead of as a long isolated reading list.
+
+## What This Service Set Is Designed To Teach
+
+The Azure path emphasizes the services most useful for learning identity-centered governance, application hosting, secrets, data, monitoring, and AI-oriented extension inside Azure.
 
 ## Service Categories
 
@@ -46,9 +61,13 @@ The goal is not to document every service. The goal is to explain the services u
 
 - [Key Vault](key-vault.md)
 
-## How to Use These Pages
+## How The Categories Connect
 
-Read service pages as needed while working through projects and patterns.
+Azure systems often begin with identity and governance decisions. Entra ID, RBAC, and managed identities define how both people and workloads get access. Storage, compute, APIs, and data services then sit inside that control model. Monitor and Application Insights give you the operational view. Later, Foundry, Azure OpenAI, and AI Search extend the same application path into AI workloads.
+
+## How This Fits Into Cloud Engineering
+
+Cloud engineers need service knowledge that helps them design and operate systems, not just browse product names. This section is designed to help you explain why a service belongs in an Azure architecture and what operating responsibility comes with it.
 
 ## Official References
 
